@@ -215,7 +215,7 @@ func listenUDPInPortRange(vnet *vnet.Net, log logging.LeveledLogger, portMax, po
 	portStart := globalMathRandomGenerator.Intn(j-i+1) + i
 	portCurrent := portStart
 	for {
-		laddr = &net.UDPAddr{IP: laddr.IP, Port: portCurrent}
+		laddr = &net.UDPAddr{IP: nil, Port: portCurrent}
 		c, e := vnet.ListenUDP(network, laddr)
 		if e == nil {
 			return c, e
